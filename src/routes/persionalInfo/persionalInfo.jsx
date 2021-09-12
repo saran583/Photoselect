@@ -557,18 +557,17 @@ const PersionalInfo = ({ data }) => {
                   </label>
                   <div className="input_err">
                     <input
-                      type="number"
+                      type="text"
                       onChange={onHandleTelephoneChange}
                       maxLength="5"
-                      minLength="4"
+                      minLength="5"
                       style={{ width: "100px", marginLeft: "10px" }}
                       {...register("zipCode", {
                         required: "Zipcode is required",
-                        minLength: {
+                        maxLength: {
                           value: 5,
-                          message: "Zipcode must be 6 characters",
+                          message: "Zipcode must be 5 characters",
                         },
-                        valueAsNumber: true,
                         pattern: {
                           value: /^[0-9]+$/,
                           message: "Zipcode should contain numbers only",
