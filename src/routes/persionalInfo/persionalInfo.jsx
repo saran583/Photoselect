@@ -32,6 +32,9 @@ const PersionalInfo = ({ data }) => {
     setFocus,
     formState: { errors },
     setValue,
+    getValues,
+    setError,
+    clearErrors,
   } = useForm({
     // mode: "onSubmit",
     reValidateMode: "onChange",
@@ -43,32 +46,34 @@ const PersionalInfo = ({ data }) => {
     shouldUnregister: true,
   });
 
-  function getyear(){
-    var result =[];
+  function getyear() {
+    var result = [];
     var date = new Date();
-    for (var i=5;i>=0;i--){
-      result.push(<option value={date.getFullYear()-i}>{date.getFullYear()-i}</option>);
+    for (var i = 5; i >= 0; i--) {
+      result.push(
+        <option value={date.getFullYear() - i}>{date.getFullYear() - i}</option>
+      );
     }
     return result;
   }
 
-  function checkvemail(event){
-    if(event.target.value===""){
+  function checkvemail(event) {
+    if (event.target.value === "") {
       setFocus("mobile");
     }
   }
 
-function onHandleTelephoneChange (e) {
-  let telephone = e.target.value;
-  let regexp = /^[0-9\b]+$/
+  function onHandleTelephoneChange(e) {
+    let telephone = e.target.value;
+    let regexp = /^[0-9\b]+$/;
 
-  // if value is not blank, then test the regex
-  if (telephone === '' || regexp.test(telephone)) {
-      this.setState({ [e.target.name]: telephone })
+    // if value is not blank, then test the regex
+    if (telephone === "" || regexp.test(telephone)) {
+      this.setState({ [e.target.name]: telephone });
+    }
   }
-};
 
-  function updatediscount(enrolled){
+  function updatediscount(enrolled) {
     const customerId = localStorage.getItem("customerId");
     let discountdata = `<soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
     <soap12:Body>
@@ -79,20 +84,17 @@ function onHandleTelephoneChange (e) {
       </DPC_SetIsDiscounts>
     </soap12:Body>
   </soap12:Envelope>`;
-  let discountConfig = {
-    method: "post",
-    url: creds.serviceurl,
-    headers: {
-      "Content-Type": "text/xml; charset=utf-8",
-    },
-    data: discountdata,
-  };
-  axios(discountConfig)
-    .then(function (response) {
+    let discountConfig = {
+      method: "post",
+      url: creds.serviceurl,
+      headers: {
+        "Content-Type": "text/xml; charset=utf-8",
+      },
+      data: discountdata,
+    };
+    axios(discountConfig).then(function (response) {
       console.log("Printing the testing part", response);
     });
-
-    
   }
 
   useEffect(async () => {
@@ -147,40 +149,42 @@ function onHandleTelephoneChange (e) {
         .catch(function (error) {
           console.log(error);
         });
-      }
+    }
 
+    let getdiscount = `<soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">\r\n  <soap12:Body>\r\n    <DPC_GetIsDiscounts xmlns="http://tempuri.org/">\r\n      <strNameId>${customerId}</strNameId>\r\n      <Username>${creds.username}</Username>\r\n      <Password>${creds.password}</Password>\r\n    </DPC_GetIsDiscounts>\r\n  </soap12:Body>\r\n</soap12:Envelope>`;
 
-      let getdiscount = `<soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">\r\n  <soap12:Body>\r\n    <DPC_GetIsDiscounts xmlns="http://tempuri.org/">\r\n      <strNameId>${customerId}</strNameId>\r\n      <Username>${creds.username}</Username>\r\n      <Password>${creds.password}</Password>\r\n    </DPC_GetIsDiscounts>\r\n  </soap12:Body>\r\n</soap12:Envelope>`;
-       
-      let getConfig = {
-          method: "post",
-          url: creds.serviceurl,
-          headers: {
-            "Content-Type": "text/xml; charset=utf-8",
-          },
-          data: getdiscount,
-        };
-        axios(getConfig)
-          .then(function (response) {
-            console.log(JSON.stringify(response.data));
-            const str = response.data
-              .split(
-                `<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"><soap:Body>`
-              )[1]
-              .split(`</soap:Body>`)[0];
-            let parser = new xml2js.Parser();
-            parser.parseString(String(str), function (err, result) {
-              const data = result.DPC_GetIsDiscountsResponse;
-              console.log("this is the value",data.DPC_GetIsDiscountsResult[0]);
-              setDiscountChecked(data.DPC_GetIsDiscountsResult[0]==="true"?true:false);
-              setDDiscountChecked(data.DPC_GetIsDiscountsResult[0]==="true"?true:false);
-              // setValue("address", data.DPC_GetIsDiscountsResult[0]);
-            });
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-    
+    let getConfig = {
+      method: "post",
+      url: creds.serviceurl,
+      headers: {
+        "Content-Type": "text/xml; charset=utf-8",
+      },
+      data: getdiscount,
+    };
+    axios(getConfig)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+        const str = response.data
+          .split(
+            `<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"><soap:Body>`
+          )[1]
+          .split(`</soap:Body>`)[0];
+        let parser = new xml2js.Parser();
+        parser.parseString(String(str), function (err, result) {
+          const data = result.DPC_GetIsDiscountsResponse;
+          console.log("this is the value", data.DPC_GetIsDiscountsResult[0]);
+          setDiscountChecked(
+            data.DPC_GetIsDiscountsResult[0] === "true" ? true : false
+          );
+          setDDiscountChecked(
+            data.DPC_GetIsDiscountsResult[0] === "true" ? true : false
+          );
+          // setValue("address", data.DPC_GetIsDiscountsResult[0]);
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
 
     let bData = `<soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">\r\n  <soap12:Body>\r\n    <GetBookingInfoPS xmlns="http://tempuri.org/">\r\n      <strCustomerId>${customerId}</strCustomerId>\r\n      <Username>${creds.username}</Username>\r\n      <Password>${creds.password}</Password>\r\n    </GetBookingInfoPS>\r\n  </soap12:Body>\r\n</soap12:Envelope>`;
     let bConfig = {
@@ -243,6 +247,20 @@ function onHandleTelephoneChange (e) {
         console.log(error);
       });
   }, [data]);
+
+  const verifyEmailCheck = (value) => {
+    const email = getValues("email");
+    const verifyEmail = getValues("verifyEmail");
+    if (email && verifyEmail != email && !showemailerr) {
+      setError("verifyEmail", {
+        type: "manual",
+        message: "Email and Verify email should be same",
+      });
+    } else {
+      clearErrors("verifyEmail");
+    }
+  };
+
   return (
     <div className="info_container">
       {redirect && <Redirect to="/favourites" />}
@@ -266,12 +284,12 @@ function onHandleTelephoneChange (e) {
           onSubmit={handleSubmit(async (data) => {
             // setFocus("email");
             // return;
-            console.log("Thi is email",data.email);
-            console.log("Thi is verify email",data);
-            if(data.email !== data.verifyEmail){
+            console.log("Thi is email", data.email);
+            console.log("Thi is verify email", data);
+            if (data.email !== data.verifyEmail) {
               setshowemailerr(true);
-              // window.scrollTo(0,10);
-              // setFocus("lastName");
+              window.scrollTo(0, 300);
+              setFocus("verifyEmail");
               return;
             }
             localStorage.setItem("userData", JSON.stringify(data));
@@ -316,7 +334,7 @@ function onHandleTelephoneChange (e) {
               .catch(function (error) {
                 console.log(error);
               });
-            localStorage.removeItem("userData");
+            // localStorage.removeItem("userData");
             setRedirect(true);
           })}
         >
@@ -376,6 +394,10 @@ function onHandleTelephoneChange (e) {
                   id="mobile"
                   {...register("mobile", {
                     required: "Phone Number is required",
+                    pattern: {
+                      value: /^[0-9]+$/,
+                      message: "Phone number should contain numbers only",
+                    },
                   })}
                 />
                 {errors.mobile && (
@@ -405,23 +427,28 @@ function onHandleTelephoneChange (e) {
               </div>
             </div>
             <div className="form_field">
-              <label htmlFor="v_email">Verify Email<sup>*</sup></label>
+              <label htmlFor="v_email">
+                Verify Email<sup>*</sup>
+              </label>
               <div className="input_err">
                 <input
                   type="text"
                   id="v_email"
+                  onKeyUp={($event) => verifyEmailCheck($event.target.value)}
                   {...register("verifyEmail", {
                     required: "Verify Email is required",
-                    pattern: {
-                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                      message: "Not a valid email",
-                    },
                   })}
                 />
                 {errors.verifyEmail && (
                   <span className="error">{errors.verifyEmail.message}</span>
                 )}
-                {showemailerr ===true ?<span className="error">Email and Verify email should be same</span>:""}
+                {showemailerr === true ? (
+                  <span className="error">
+                    Email and Verify email should be same
+                  </span>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
             <div className="form_field">
@@ -431,6 +458,7 @@ function onHandleTelephoneChange (e) {
                   type="text"
                   id="a_email"
                   {...register("alternateEmail", {
+                    required: "Alternate Email is required",
                     pattern: {
                       value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                       message: "Not a valid email",
@@ -529,15 +557,22 @@ function onHandleTelephoneChange (e) {
                   </label>
                   <div className="input_err">
                     <input
-                      type="text"
+                      type="number"
                       onChange={onHandleTelephoneChange}
                       maxLength="5"
                       minLength="4"
                       style={{ width: "100px", marginLeft: "10px" }}
                       {...register("zipCode", {
                         required: "Zipcode is required",
-                        minLength: 5,
+                        minLength: {
+                          value: 5,
+                          message: "Zipcode must be 6 characters",
+                        },
                         valueAsNumber: true,
+                        pattern: {
+                          value: /^[0-9]+$/,
+                          message: "Zipcode should contain numbers only",
+                        },
                       })}
                     />
                     {errors.zipCode && (
@@ -604,11 +639,7 @@ function onHandleTelephoneChange (e) {
               <div className="form_field">
                 <label htmlFor="i_year">Initiation Year</label>
                 <div className="input_err">
-                  <select
-                    {...register("initiationYear", {
-                     
-                    })}
-                  >
+                  <select {...register("initiationYear", {})}>
                     <option value="">Select</option>
                     {getyear()}
                   </select>
@@ -632,7 +663,10 @@ function onHandleTelephoneChange (e) {
               width="23"
               height="23"
               alt="check"
-              onClick={() => {updatediscount(!discountChecked); setDiscountChecked(!discountChecked); }}
+              onClick={() => {
+                updatediscount(!discountChecked);
+                setDiscountChecked(!discountChecked);
+              }}
             />
             Get discounts! Sign up now and receive an exclusive coupon when your
             proof is ready.
@@ -694,7 +728,10 @@ function onHandleTelephoneChange (e) {
                 }
                 width="18"
                 alt=""
-                onClick={() => {updatediscount(!dDiscountChecked); setDDiscountChecked(!dDiscountChecked)}}
+                onClick={() => {
+                  updatediscount(!dDiscountChecked);
+                  setDDiscountChecked(!dDiscountChecked);
+                }}
               />
               <strong>Yes!</strong>&nbsp;&nbsp; I would like to receive
               exclusive discounts and offers.
@@ -773,7 +810,7 @@ function onHandleTelephoneChange (e) {
                   .catch(function (error) {
                     console.log(error);
                   });
-                localStorage.removeItem("userData");
+                // localStorage.removeItem("userData");
                 setRedirect(true);
               })}
             >

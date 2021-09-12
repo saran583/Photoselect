@@ -231,6 +231,17 @@ form :is(.name, .contact, .address) .form_field input, select {
 a {
     color: #333 !important;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 @media (max-width: 576px) {
     .info_container .head {
         padding: 10px 12px;
