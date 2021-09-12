@@ -1,0 +1,264 @@
+.forward_container {
+    width: 96%;
+    margin: auto;
+}
+.forward_container .head {
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.forward_container .head h5 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #7fdc7b;
+    text-align: center;
+    margin: 10px 0;
+}
+.forward_container .head span {
+    font-size: 26px;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+}
+.forward_container .head span i {
+    font-size: 30px;
+    color: #111;
+}
+.forward_container .body {
+    padding: 10px 15px;
+}
+.forward_container .body h6 {
+    font-size: 23px;
+    text-align: center;
+    color: rgba(235, 123, 119, 1);
+}
+.forward_container .body button {
+    background: rgba(235, 123, 119, 1);
+    width: 250px;
+    display: block;
+    margin: auto;
+    border-radius: 5px;
+    padding: 7px 0;
+    color: #fff;
+    font-weight: 400;
+    font-size: 21px;
+    border: none;
+    outline: none;
+}
+.forward_container .cp_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.forward_container .cp_container .comp, .forward_container .cp_container .port {
+    width: 50%;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.forward_container .cp_container :is(.comp, .port) .details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.forward_container .cp_container :is(.comp, .port) .details img {
+    width: 180px;
+    height: 80px;
+    align-self: flex-end;
+}
+.forward_container .cp_container :is(.comp, .port) .details .content {
+    font-size: 23px;
+    font-weight: 200;
+    padding: 18px;
+    border: 5px solid;
+    border-color: #82ca78;
+    border-radius: 10px;
+    flex: 1;
+    max-width: 300px;
+    text-align: center;
+    color: #333;
+}
+.forward_container .cp_container .port .details .content {
+    border-color: #7cbddd;
+}
+.forward_container .cp_container :is(.comp, .port) .image {
+    width: 240px;
+    height: 340px;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 2px solid #fff;
+    position: relative;
+    overflow: hidden;
+}
+.forward_container .cp_container :is(.comp, .port) .image img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain;
+    max-width: 380px;
+    transform: rotate(-90deg) scale(2);
+}
+.forward_container .cp_container :is(.comp, .port) .image p {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 6px 10px;
+    margin: 0;
+    text-align: center;
+    background: #fff;
+    margin-top: -5px;
+    font-size: 13px;
+    width: calc(100% - 16px);
+}
+.forward_container .cp_container :is(.comp, .port) .image span {
+    position: absolute;
+    top: -20px;
+    left: 0px;
+    font-size: 80px;
+    color: #7fdc7b;
+    font-weight: 700;
+}
+.forward_container .cp_container .port .image span {
+    left: auto;
+    right: 0px;
+    color: #7cbddd;
+}
+.forward_container .body p {
+    margin-top: 25px;
+    font-size: 20px;
+    font-weight: normal;
+    color: #444;
+    text-align: center;
+}
+.forward_container .cropping {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;
+}
+.forward_container .cropping .img {
+    width: 125px;
+    height: 125px;
+    margin-right: 15px;
+}
+.forward_container .cropping .img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.forward_container .cropping .details h6 {
+    font-size: 23px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 5px;
+}
+.forward_container .cropping .details p {
+    font-size: 16px;
+    font-weight: normal;
+    color: #333;
+    margin-bottom: 5px;
+    margin-top: 15px;
+    text-align: left;
+}
+@media (max-width: 992px) {
+    .forward_container .cp_container :is(.comp, .port) .details .content {
+        font-size: 20px;
+        padding: 10px;
+        border: 4px solid;
+        border-color: #82ca78;
+    }
+    .forward_container .cp_container .port .details .content {
+        border-color: #7cbddd;
+    }
+}
+@media (max-width: 896px) {
+    .forward_container .cp_container :is(.comp, .port) .details .content {
+        font-size: 19px;
+        padding: 8px;
+        border: 4px solid;
+        border-color: #82ca78;
+    }
+    .forward_container .cp_container .port .details .content {
+        border-color: #7cbddd;
+    }
+}
+@media (max-width: 768px) {
+    .forward_container .cp_container {
+        flex-direction: column;
+    }
+    .forward_container .cp_container .comp, .forward_container .cp_container .port {
+        width: 100%;
+    }
+}
+@media (max-width: 576px) {
+    .forward_container .body button {
+        position: fixed;
+        bottom: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 100;
+    }
+    .forward_container .head {
+        padding: 10px 12px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .forward_container .head h5 {
+        font-size: 28px;
+        margin-bottom: 0;
+        align-self: center;
+    }
+    .forward_container .head span {
+        font-size: 20px;
+    }
+    .forward_container .head span i {
+        font-size: 21px;
+    }
+    .forward_container .body {
+        padding: 10px;
+    }
+    .forward_container .cp_container .comp, .forward_container .cp_container .port {
+        padding: 10px 0 0;
+    }
+    .forward_container .cp_container .comp {
+        flex-direction: column-reverse;
+    }
+    .forward_container .cp_container .port {
+        flex-direction: column;
+    }
+    .forward_container .cp_container .comp .details {
+        margin-top: 15px;
+    }
+    .forward_container .cp_container :is(.comp) .image {
+        padding: 0 0 0 10px;
+    }
+    .forward_container .cp_container :is(.port) .image {
+        padding: 0 10px 0 0;
+    }
+    .forward_container .cp_container :is(.comp, .port) .details .content {
+        font-size: 18px;
+        padding: 6px;
+    }
+    .forward_container .cp_container :is(.comp, .port) .details img {
+        /* width: 150px; */
+        display: none;
+    }
+    .forward_container .cropping .img {
+        width: 100px;
+        height: 100px;
+    }
+    .forward_container .cropping .img img {
+        width: 100px;
+        height: 100px;
+    }
+    .forward_container .cropping .details h6 {
+        font-size: 21px;
+    }
+    .forward_container .cropping .details p {
+        width: 100%;
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,252 @@
+.completed_container {
+    width: 96%;
+    margin: auto;
+}
+.completed_container .head {
+    padding: 0 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.completed_container .head h5 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #7fdc7b;
+    text-align: center;
+    margin: 10px 0;
+}
+.completed_container .body {
+    padding: 10px 15px;
+}
+.completed_container .body p.have_que {
+    font-size: 24px;
+    font-weight: normal;
+    color: #333;
+    text-align: center;
+    margin-top: 10px;
+}
+.completed_container .cp_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.completed_container .cp_container .comp, .completed_container .cp_container .port {
+    width: 50%;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.completed_container .cp_container :is(.comp, .port) .details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.completed_container .cp_container :is(.comp, .port) .details img {
+    width: 180px;
+    height: 80px;
+    align-self: flex-end;
+}
+.completed_container .cp_container :is(.comp, .port) .details .content {
+    font-size: 24px;
+    font-weight: 200;
+    padding: 20px;
+    border: 5px solid;
+    border-color: #82ca78;
+    border-radius: 10px;
+    flex: 1;
+    max-width: 300px;
+    text-align: center;
+    color: #333;
+}
+.completed_container .cp_container .port .details .content {
+    border-color: #7cbddd;
+}
+.completed_container .cp_container :is(.comp, .port) .image {
+    width: 240px;
+    height: 340px;
+    box-sizing: border-box;
+    padding: 10px;
+    position: relative;
+    border: 2px solid #fff;
+    overflow: hidden;
+}
+.completed_container .cp_container :is(.comp, .port) .image img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain;
+    max-width: 380px;
+    transform: rotate(-90deg) scale(2);
+}
+.completed_container .cp_container :is(.comp, .port) .image p {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 6px 10px;
+    margin: 0;
+    text-align: center;
+    background: #fff;
+    margin-top: -5px;
+    font-size: 13px;
+    width: calc(100% - 16px);
+}
+.completed_container .cp_container :is(.comp, .port) .image span {
+    position: absolute;
+    top: 8px;
+    left: 18px;
+    font-size: 46px;
+    color: #7fdc7b;
+    font-weight: 700;
+}
+.completed_container .cp_container .port .image span {
+    left: auto;
+    right: 18px;
+    color: #7cbddd;
+}
+.completed_container .body p {
+    margin-top: 25px;
+    font-size: 20px;
+    font-weight: normal;
+    color: #444;
+    text-align: center;
+}
+.completed_container .cropping {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;
+}
+.completed_container .cropping .img {
+    width: 125px;
+    height: 125px;
+    margin-right: 15px;
+}
+.completed_container .cropping .img img {
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+}
+.completed_container .cropping .details h6 {
+    font-size: 23px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 5px;
+    text-align: center;
+    width: 70%;
+}
+.completed_container .cropping .details p {
+    font-size: 16px;
+    font-weight: normal;
+    color: #333;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    width: 70%;
+}
+@media (max-width: 992px) {
+    .completed_container .cp_container :is(.comp, .port) .details .content {
+        font-size: 20px;
+        padding: 10px;
+        border: 4px solid;
+        border-color: #82ca78;
+    }
+    .completed_container .cp_container .port .details .content {
+        border-color: #7cbddd;
+    }
+}
+@media (max-width: 896px) {
+    .completed_container .cp_container :is(.comp, .port) .details .content {
+        font-size: 19px;
+        padding: 8px;
+        border: 4px solid;
+        border-color: #82ca78;
+    }
+    .completed_container .cp_container .port .details .content {
+        border-color: #7cbddd;
+    }
+}
+@media (max-width: 768px) {
+    .completed_container .body p.have_que {
+        font-size: 22px;
+    }
+    .completed_container .cp_container {
+        flex-direction: column;
+    }
+    .completed_container .cp_container .comp, .completed_container .cp_container .port {
+        width: 100%;
+        justify-content: center;
+    }
+    .completed_container .cropping .details h6 {
+        width: 90%;
+    }
+    .completed_container .cropping .details p {
+        width: 90%;
+    }
+}
+@media (max-width: 576px) {
+    .completed_container .head {
+        padding: 10px 12px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .completed_container .head h5 {
+        font-size: 28px;
+        margin-bottom: 0;
+        align-self: center;
+    }
+    .completed_container .head span {
+        font-size: 20px;
+    }
+    .completed_container .head span i {
+        font-size: 21px;
+    }
+    .completed_container .body {
+        padding: 10px;
+    }
+    .completed_container .body p.have_que {
+        font-size: 20px;
+    }
+    .completed_container .cp_container .comp, .completed_container .cp_container .port {
+        padding: 10px 0 0;
+    }
+    .completed_container .cp_container .comp {
+        flex-direction: column-reverse;
+    }
+    .completed_container .cp_container .port {
+        flex-direction: column;
+    }
+    .completed_container .cp_container :is(.comp) .image {
+        padding: 0 0 0 10px;
+    }
+    .completed_container .cp_container :is(.port) .image {
+        padding: 0 10px 0 0;
+    }
+    .completed_container .cp_container :is(.comp, .port) .details .content {
+        font-size: 18px;
+        padding: 6px;
+    }
+    .completed_container .cp_container .comp .details {
+        margin-top: 15px;
+    }
+    .completed_container .cp_container :is(.comp, .port) .details img {
+        /* width: 150px; */
+        display: none;
+    }
+    .completed_container .cropping .img {
+        width: 100px;
+        height: 100px;
+    }
+    .completed_container .cropping .img img {
+        width: 100px;
+        height: 100px;
+    }
+    .completed_container .cropping .details h6 {
+        font-size: 21px;
+        width: 100%;
+    }
+    .completed_container .cropping .details p {
+        width: 100%;
+        font-size: 14px;
+    }
+}

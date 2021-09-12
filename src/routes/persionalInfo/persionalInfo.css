@@ -1,0 +1,315 @@
+.info_container {
+    width: 96%;
+    margin: auto;
+}
+.info_container .head {
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.info_container .head h5 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #7fdc7b;
+    text-align: center;
+    margin: 10px 0;
+}
+.info_container .head span {
+    font-size: 26px;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+}
+.info_container .head span i {
+    font-size: 30px;
+    color: #111;
+}
+.info_container .body {
+    width: 95%;
+    margin: 10px auto;
+}
+.info_container .body h6 {
+    font-size: 20px;
+    color: #333;
+    font-weight: 500;
+}
+.info_container .body p {
+    font-size: 16px;
+    color: #333;
+    font-weight: 400;
+    margin: 10px 0;
+}
+.info_container .body form {
+    width: 100%;
+    padding-bottom: 25px;
+}
+.info_container .body form :is(.name, .contact, .address) {
+    margin: 10px 0;
+}
+.info_container .body form :is(.name, .contact, .address) h6 {
+    font-size: 23px;
+    color: #dd817b;
+    font-weight: bold;
+    margin: 0;
+}
+.info_container .body form :is(.name, .contact, .address) p {
+    font-size: 18px;
+    color: #333;
+    font-weight: 500;
+}
+form :is(.name, .contact, .address) .form_field {
+    width: 540px;
+    padding: 6px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+form :is(.name, .contact, .address) .form_field label {
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+}
+form :is(.name, .contact, .address) .form_field input, select {
+    height: 44px;
+    width: 350px;
+    border: none;
+    outline: none;
+    background: #fff;
+    border-radius: 10px;
+    padding: 0 10px;
+    font-size: 16px;
+    color: #333;
+}
+.discount, .terms {
+    padding: 10px 10px 10px 25px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #44442a;
+    background: rgb(247, 201, 173);
+    margin: 20px 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.terms {
+    background: rgb(255, 229, 153);
+}
+.terms a {
+    text-decoration: underline;
+    cursor: pointer;
+}
+.discount img, .terms img {
+    margin-right: 15px;
+    cursor: pointer;
+}
+.discount span, .terms span {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+}
+.discount span {
+    font-size: 35px;
+    font-weight: 800;
+    color: #c45912;
+    font-family: MuktaMahee-ExtraBold, "Mukta Mahee ExtraBold", "Mukta Mahee", sans-serif;
+}
+.terms span {
+    font-size: 35px;
+    font-weight: 800;
+    color: #bf8e00;
+    font-family: MuktaMahee-ExtraBold, "Mukta Mahee ExtraBold", "Mukta Mahee", sans-serif;
+}
+.info_container .body button, .info_dialog_container button {
+    background: rgba(235, 123, 119, 1);
+    width: 200px;
+    display: block;
+    border-radius: 5px;
+    padding: 10px 0;
+    color: #fff;
+    font-weight: 400;
+    font-size: 22px;
+    border: none;
+    outline: none;
+}
+.info_dialog_container button {
+    padding: 5px 0;
+    width: 160px;
+    display: block;
+    margin: 15px auto;
+    font-size: 20px;
+}
+.input_err {
+    display: flex;
+    flex-direction: column;
+}
+.input_err .error {
+    font-size: 12px;
+    margin-left: 6px;
+    color: #f00;
+}
+.dialog_contaa {
+    padding: 20px;
+}
+.dialog_contaa h5 {
+    font-size: 22px;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+.dialog_contaa p {
+    width: 90%;
+    margin: auto;
+    font-size: 12.5px;
+    font-weight: normal;
+}
+.dialog_contaa button {
+    background: rgba(235, 123, 119, 1);
+    width: 115px;
+    display: block;
+    border-radius: 5px;
+    padding: 5px 0;
+    color: #fff;
+    font-weight: 400;
+    font-size: 19px;
+    border: none;
+    outline: none;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+/* .dialog_container {
+} */
+.info_dialog_container p {
+    text-align: center;
+    width: 100%;
+}
+.info_dialog_container p span {
+    font-size: 90px;
+    font-weight: 500;
+    color: #FFD966;
+}
+.info_dialog_container h5 {
+    font-size: 22px;
+    font-weight: 500;
+    text-align: center;
+    color: #333;
+}
+.info_dialog_container .check_option {
+    padding: 0 45px;
+    font-size: 18px;
+    line-height: 30px;
+    display: flex;
+}
+.info_dialog_container .check_option img {
+    margin-right: 20px;
+}
+.info_dialog_container .check_option a {
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: 600;
+}
+.info_dialog_container .info {
+    padding: 0 45px;
+    margin-top: 6px;
+    line-height: 15px;
+}
+.info_dialog_container .info small {
+    font-size: 13px;
+    font-style: italic;
+    color: #333;
+    font-weight: normal;
+}
+.info_dialog_container a.simulate {
+    display: block;
+    margin: auto;
+    width: fit-content;
+    cursor: pointer;
+}
+a {
+    color: #333 !important;
+}
+@media (max-width: 576px) {
+    .info_container .head {
+        padding: 10px 12px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .info_container .head h5 {
+        font-size: 28px;
+        margin-bottom: 0;
+        align-self: center;
+    }
+    .info_container .head span {
+        font-size: 20px;
+    }
+    .info_container .head span i {
+        font-size: 21px;
+    }
+    .info_container .body {
+        padding: 10px 12px 0;
+    }
+    .info_container .body h6 {
+        font-size: 18px;
+    }
+    .info_container .body p {
+        font-size: 15px;
+    }
+    .info_container .body form :is(.name, .contact, .address) h6 {
+        font-size: 21px;
+    }
+    .info_container .body form :is(.name, .contact, .address) p {
+        font-size: 16px;
+    }
+    .input_err {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    form :is(.name, .contact, .address) .form_field {
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+    form :is(.name, .contact, .address) .form_field label {
+        font-size: 16px;
+        margin-left: 10px !important;
+    }
+    form :is(.name, .contact, .address) .form_field input, select {
+        height: 40px;
+        width: 95%;
+        margin-top: 6px;
+    }
+    form .address .form_field .state {
+        width: 100% !important;
+        flex-direction: column;
+    }
+    form .address .form_field .state select {
+        margin-right: 0 !important;
+        width: 100%;
+    }
+    form .address .form_field .state div {
+        flex-direction: column;
+        width: 100%;
+        align-items: flex-start !important;
+        margin-top: 10px;
+    }
+    form .address .form_field .state div input {
+        width: 95% !important;
+        margin-left: 0 !important;
+        height: 40px !important;
+    }
+    .discount, .terms {
+        font-size: 15px;
+    }
+    .info_container .body button, .info_dialog_container button {
+        width: 150px;
+        padding: 6px 0;
+        font-size: 20px;
+    }
+    .info_container .body button i, .info_dialog_container button i {
+        font-size: 16px;
+    }
+}

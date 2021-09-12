@@ -1,0 +1,93 @@
+.dont_agree_cont {
+    width: 96%;
+    margin: auto;
+}
+.dont_agree_cont .head {
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.dont_agree_cont .head h5 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #7fdc7b;
+    text-align: center;
+    margin: 10px 0;
+}
+.dont_agree_cont .head span {
+    font-size: 26px;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+}
+.dont_agree_cont .head span i {
+    font-size: 30px;
+    color: #111;
+}
+.dont_agree_cont .body {
+    width: 100%;
+    margin: 30px auto 10px;
+}
+.dont_agree_cont .body p {
+    width: 70%;
+    margin: auto;
+    font-size: 20px;
+    font-weight: 500;
+    color: #333;
+    text-align: center;
+}
+.dont_agree_cont .body button {
+    background: rgba(235, 123, 119, 1);
+    width: 250px;
+    display: block;
+    margin: 20px auto 0;
+    border-radius: 5px;
+    padding: 10px 0;
+    color: #fff;
+    font-weight: 400;
+    font-size: 22px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.dont_agree_cont .body button i {
+    font-size: 16px;
+}
+.dont_agree_cont .body  p.go-back {
+    font-size: 17px;
+    font-weight: normal;
+    letter-spacing: 1.3px;
+    margin-top: 10px;
+}
+@media (max-width: 768px) {
+    .dont_agree_cont .body p {
+        width: 80%;
+    }
+}
+@media (max-width: 576px) {
+    .dont_agree_cont .head {
+        padding: 10px 12px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .dont_agree_cont .head h5 {
+        font-size: 28px;
+        margin-bottom: 0;
+        align-self: center;
+    }
+    .dont_agree_cont .head span {
+        font-size: 20px;
+    }
+    .dont_agree_cont .head span i {
+        font-size: 21px;
+    }
+    .dont_agree_cont .body p {
+        width: 95%;
+        font-size: 18px;
+    }
+    .dont_agree_cont .body button {
+        width: 200px;
+        padding: 6px 0;
+    }
+}

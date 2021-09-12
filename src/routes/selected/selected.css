@@ -1,0 +1,411 @@
+.selected_container {
+    width: 96%;
+    margin: auto;
+}
+.selected_container .head {
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+.selected_container .head h5 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #7fdc7b;
+    text-align: center;
+    margin: 10px 0;
+}
+.selected_container .head span {
+    font-size: 26px;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+}
+.selected_container .head .info {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    background: #fff;
+    box-sizing: border-box;
+    border: 3px solid #7cbddd;
+    border-radius: 50%;
+    bottom: -20px;
+    right: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+.selected_container .head span i {
+    font-size: 30px;
+    color: #111;
+}
+.selected_container .body {
+    padding: 10px 15px;
+    width: 92%;
+    margin: auto;
+}
+.selected_container .body .images_cont {
+    display: flex;
+    flex-wrap: wrap;
+}
+.selected_container .body .images_cont .image, .dialog_conta .image {
+    width: calc(25% - 20px);
+    box-sizing: border-box;
+    padding: 10px;
+    position: relative;
+}
+.dialog_conta .image {
+    height: 550px !important;
+}
+.selected_container .body .images_cont .image, .dialog_conta .image {
+    padding: 10px 13px 10px 10px;
+}
+.selected_container .body .images_cont .image .photo, .dialog_conta .image .photo {
+    border: 2px solid #fff;
+    width: 100%;
+    height: 370px;
+    max-height: 380px;
+    overflow: hidden;
+}
+.dialog_conta .image .photo.full {
+    /* height: calc(100% - 20px) !important; */
+    height: 550px;
+    overflow: hidden;
+    max-height: calc(100% - 30px);
+}
+.dialog_conta .image .photo.full img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain;
+    transform: rotate(-90deg) scale(1.5);
+}
+.selected_container .body .images_cont .image .photo img, .dialog_conta .image .photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transform: rotate(-90deg) scale(1.5);
+}
+.dialog_conta .image img.photo {
+    height: calc(100% - 20px);
+    max-height: 550px;
+}
+.selected_container .body .images_cont .image p, .dialog_conta .image p {
+    padding: 6px 10px;
+    margin: 0;
+    text-align: center;
+    background: #fff;
+    margin-top: -5px;
+    font-size: 13px;
+    width: calc(100% - 16px);
+}
+.selected_container .body .images_cont .image .comp_port, .dialog_conta .image .comp_port {
+    width: 37px;
+    height: 45px;
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(121, 121, 121);
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    opacity: 0.5;
+    cursor: pointer;
+}
+.selected_container .body .images_cont .image .comp_port.active, .dialog_conta .image .comp_port.active {
+    background: #fff;
+    opacity: 1;
+}
+.selected_container .body .images_cont .image .comp_port.reverse {
+    right: 11px;
+    left: auto;
+}
+.selected_container .body .images_cont .image .comp_port.reverse.active {
+    background: #fff;
+}
+.dialog_conta .image .comp_port.reverse {
+    right: 11px;
+    left: auto;
+}
+.selected_container .body .images_cont .image .comp_port.reverse span, .dialog_cont .image .comp_port.reverse span {
+    top: -14px;
+    left: 7px;
+}
+.selected_container .body .images_cont .image .comp_port span, .dialog_conta .image .comp_port span {
+    font-size: 40px;
+    font-weight: 700;
+    color: #333;
+    position: absolute;
+    top: -6px;
+    left: 5px;
+}
+.selected_container .body .images_cont .image .comp_port.active span, .dialog_conta .image .comp_port.active span {
+    color: #7fdc7b;
+}
+.selected_container .body .images_cont .image .comp_port.reverse.active span, .dialog_conta .image .comp_port.reverse.active span {
+    color: #7cbddd;
+}
+.selected_container .body .images_cont .image span, .dialog_conta .image span {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+}
+.selected_container .body .images_cont .image span img, .dialog_conta .image span img {
+    border: none;
+    width: 30px;
+    height: 26px;
+}
+.selected_container .body .images_cont .image span.add, .dialog_conta .image span.add {
+    bottom: 25px;
+    right: 15px;
+    top: auto;
+    left: auto;
+    width: 23px;
+    text-align: center;
+    line-height: 23px;
+    background: #fff;
+    border-radius: 50%;
+    border: 1px solid #333;
+}
+.dialog_conta .image span.add {
+    bottom: 25px;
+}
+.dialog_conta .image span.add {
+    height: 23px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.selected_container .body .images_cont .image span.add i, .dialog_conta .image span.add i {
+    font-size: 14px;
+}
+.selected_container .body button {
+    background: rgba(235, 123, 119, 1);
+    width: 250px;
+    display: block;
+    border-radius: 5px;
+    padding: 10px 0;
+    color: #fff;
+    font-weight: 400;
+    font-size: 22px;
+    border: none;
+    outline: none;
+}
+.selected_container .body button:disabled {
+    background: rgba(170, 170, 170);
+    cursor: default;
+}
+.selected_container .cropping {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;
+}
+.selected_container .cropping .img {
+    width: 125px;
+    height: 125px;
+    margin-right: 15px;
+}
+.selected_container .cropping .img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.selected_container .cropping .details h6 {
+    font-size: 23px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 5px;
+}
+.selected_container .cropping .details p {
+    font-size: 16px;
+    font-weight: normal;
+    color: #333;
+    margin-bottom: 5px;
+}
+.selected_container .cropping .details a {
+    text-decoration: none;
+    color: rgba(235, 123, 119, 1);
+    font-size: 16px;
+    font-weight: 600;
+}
+.dialog_conta {
+    width: 100%;
+    height: 100%;
+}
+.dialog_conta span {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+}
+.dialog_conta span {
+    font-size: 24px;
+}
+.dialog_cont {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    background: rgb(238, 238, 231);
+    border: 4px solid #7cbddd;
+}
+.dialog_cont h5 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #7fdc7b;
+    text-align: center;
+    margin: 10px 0;
+}
+.dialog_cont p {
+    font-size: 22px;
+    color: #333;
+    font-weight: normal;
+    text-align: center;
+}
+.dialog_cont .com_por {
+    display: flex;
+    padding: 20px;
+    margin-top: 15px;
+    justify-content: space-around;
+    align-items: center;
+}
+.dialog_cont :is(.com, .por) {
+    width: 50%;
+    text-align: center;
+}
+.dialog_cont :is(.com, .por) p.letter {
+    font-size: 40px;
+    font-weight: 700;
+    color: #7cbddd;
+    border: 2px solid #333;
+    box-sizing: border-box;
+    width: 46px;
+    height: 46px;
+    line-height: 42px;
+    margin: auto;
+}
+.dialog_cont .com p.letter {
+    color: #7fdc7b;
+}
+.dialog_cont :is(.com, .por) h6 {
+    font-size: 26px;
+    font-weight: 600;
+    color: #333;
+    margin-top: 6px;
+}
+.dialog_cont :is(.com, .por) p.desc {
+    font-size: 16px;
+    font-weight: normal;
+    color: #333;
+    margin: 0;
+}
+.dialog_cont {
+    position: relative;
+}
+.dialog_cont .close {
+    width: 30px;
+    height: 30px;
+    border: 2px solid #333;
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+}
+@media (max-width: 992px) {
+    .selected_container .body .images_cont .image {
+        width: 33.33% !important;
+    }
+}
+@media (max-width: 768px) {
+    .selected_container .body .images_cont .image {
+        width: 50% !important;
+    }
+    .selected_container .cropping .details p {
+        width: 90%;
+    }
+}
+@media (max-width: 576px) {
+    .dialog_cont h5 {
+        font-size: 32px;
+    }
+    .dialog_cont p {
+        font-size: 20px;
+    }
+    .selected_container .head {
+        padding: 10px 12px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .selected_container .head h5 {
+        font-size: 28px;
+        margin-bottom: 0;
+        align-self: center;
+    }
+    .selected_container .head span.back {
+        min-width: 65px;
+        font-size: 20px;
+    }
+    .selected_container .head span i {
+        font-size: 21px;
+    }
+    .selected_container .body .images_cont .image {
+        width: 100% !important;
+    }
+    .selected_container .body .images_cont .image .photo {
+        height: 400px !important;
+    }
+    /* .selected_container .body .images_cont .image .photo img {
+        height: 490px !important;
+        width: 380px !important;
+        transform: rotate(-90deg) translate(14%, 7%);
+    } */
+    .selected_container .body button {
+        width: 200px;
+        padding: 6px 0;
+    }
+    .selected_container .body button i {
+        font-size: 16px;
+    }
+    .selected_container .cropping .img {
+        width: 100px;
+        height: 100px;
+    }
+    .selected_container .cropping .img img {
+        width: 100px;
+        height: 100px;
+    }
+    .selected_container .cropping .details h6 {
+        font-size: 21px;
+    }
+    .selected_container .cropping .details p {
+        width: 100%;
+        font-size: 14px;
+    }
+    .selected_container .cropping .details a {
+        font-size: 15px;
+    }
+    .dialog_conta .image {
+        height: 595px !important;
+    }
+}
+@media (max-width: 540px) {
+    /* .selected_container .body .images_cont .image .photo img {
+        transform: rotate(-90deg) translate(14%, 2%);
+    } */
+}
+@media (max-width: 500px) {
+    /* .selected_container .body .images_cont .image .photo img {
+        transform: rotate(-90deg) translate(14%, -6%);
+    } */
+}
+@media (max-width: 440px) {
+    /* .selected_container .body .images_cont .image .photo img {
+        transform: rotate(-90deg) translate(14%, -10%);
+    } */
+}

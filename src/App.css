@@ -1,0 +1,82 @@
+.body {
+    background: #eeeee9;
+    height: auto;
+    min-height: calc(100vh - 120px);
+    overflow-x: hidden;
+}
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #fff;
+    padding-bottom: 10px;
+}
+a {
+    text-decoration: none;
+}
+button {
+    cursor: pointer;
+}
+.dialog .MuiPaper-root {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 0;
+}
+.dialog.select .MuiPaper-root {
+    width: 80% !important;
+    height: 60% !important;
+    border-radius: 0;
+}
+.dialog.full_screen .MuiPaper-root {
+    width: 85% !important;
+    height: 85% !important;
+    border-radius: 0;
+}
+.dialog.carousel .MuiPaper-root {
+    width: 420px !important;
+    height: 550px !important;
+}
+.dialog.terms-dialog .MuiPaper-root {
+    min-width: 60% !important;
+    height: auto !important;
+    border-radius: 10px;
+    border: 4px solid rgba(0, 0, 0, .87);
+    padding-bottom: 20px;
+}
+.slick-slider {
+    height: 100% !important;
+}
+.slick-list {
+    height: 100% !important;
+}
+.slick-track {
+    height: 100% !important;
+}
+.slick-arrow.slick-prev {
+    left: 12px !important;
+    z-index: 2;
+}
+.slick-arrow.slick-next {
+    right: 12px !important;
+}
+@media (max-width: 576px) {
+    .dialog.select .MuiPaper-root {
+        margin: 10px;
+        width: 100% !important;
+        height: 60% !important;
+        border-radius: 0;
+    }
+    .dialog.full_screen .MuiPaper-root {
+        width: 100% !important;
+        height: 300px !important;
+        border-radius: 0;
+        margin: 20px 0;
+    }
+    .dialog .MuiPaper-root {
+        margin: 0;
+    }
+    .dialog.carousel .MuiPaper-root  {
+        margin: 10px;
+        height: 600px !important;
+    }
+}
