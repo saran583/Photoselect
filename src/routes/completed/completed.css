@@ -94,15 +94,15 @@
 }
 .completed_container .cp_container :is(.comp, .port) .image span {
     position: absolute;
-    top: 8px;
-    left: 18px;
+    top: -5px;
+    left: 1px;
     font-size: 46px;
     color: #7fdc7b;
     font-weight: 700;
 }
 .completed_container .cp_container .port .image span {
     left: auto;
-    right: 18px;
+    right: 1px;
     color: #7cbddd;
 }
 .completed_container .body p {

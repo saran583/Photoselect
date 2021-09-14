@@ -258,9 +258,11 @@ const PersionalInfo = ({ data }) => {
       });
     } else {
       clearErrors("verifyEmail");
+      console.log("this is verify email");
     }
   };
 
+  
   return (
     <div className="info_container">
       {redirect && <Redirect to="/favourites" />}
@@ -390,12 +392,20 @@ const PersionalInfo = ({ data }) => {
                 <input
                   type="text"
                   maxLength="10"
-                  minLength="10"
                   id="mobile"
                   {...register("mobile", {
                     required: "Phone Number is required",
+                    maxLength: {
+                      value: 10,
+                      message: "Phone number must not exceed 10 digits",
+                    },
+                    minLength: {
+                      value: 10,
+                      message: "Phone number must be atleast 10 digits",
+                    }, 
                     pattern: {
                       value: /^[0-9]+$/,
+                                        
                       message: "Phone number should contain numbers only",
                     },
                   })}
@@ -437,6 +447,10 @@ const PersionalInfo = ({ data }) => {
                   onKeyUp={($event) => verifyEmailCheck($event.target.value)}
                   {...register("verifyEmail", {
                     required: "Verify Email is required",
+                    pattern: {
+                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                      message: "Not a valid email",
+                    },
                   })}
                 />
                 {errors.verifyEmail && (
@@ -458,7 +472,7 @@ const PersionalInfo = ({ data }) => {
                   type="text"
                   id="a_email"
                   {...register("alternateEmail", {
-                    required: "Alternate Email is required",
+                    // required: "Alternate Email is required",
                     pattern: {
                       value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                       message: "Not a valid email",
@@ -558,13 +572,16 @@ const PersionalInfo = ({ data }) => {
                   <div className="input_err">
                     <input
                       type="text"
-                      onChange={onHandleTelephoneChange}
                       maxLength="5"
-                      minLength="5"
+                      onChange={onHandleTelephoneChange}
                       style={{ width: "100px", marginLeft: "10px" }}
                       {...register("zipCode", {
                         required: "Zipcode is required",
                         maxLength: {
+                          value: 5,
+                          message: "Zipcode must be 5 characters",
+                        },
+                        minLength: {
                           value: 5,
                           message: "Zipcode must be 5 characters",
                         },

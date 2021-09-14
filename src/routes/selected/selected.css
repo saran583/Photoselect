@@ -30,8 +30,8 @@
     box-sizing: border-box;
     border: 3px solid #7cbddd;
     border-radius: 50%;
-    bottom: -20px;
-    right: 25%;
+    /* bottom: -20px; */
+    right: 5%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -127,7 +127,7 @@
     left: auto;
 }
 .selected_container .body .images_cont .image .comp_port.reverse span, .dialog_cont .image .comp_port.reverse span {
-    top: -14px;
+    top: -2px;
     left: 7px;
 }
 .selected_container .body .images_cont .image .comp_port span, .dialog_conta .image .comp_port span {
@@ -135,7 +135,7 @@
     font-weight: 700;
     color: #333;
     position: absolute;
-    top: -6px;
+    top: -2px;
     left: 5px;
 }
 .selected_container .body .images_cont .image .comp_port.active span, .dialog_conta .image .comp_port.active span {

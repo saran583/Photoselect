@@ -12,9 +12,11 @@ const CheckDetails = ({ data }) => {
   const [isDisabled, setIsDisabled] = useState(true);
   const [groups, setGroups] = useState([]);
   const [redirect, setRedirect] = useState(false);
+  const orgname = localStorage.getItem("organization");
 
   useEffect(() => {
     const customerId = localStorage.getItem("customerId");
+    
     let bookingPath = "";
     let bData = `<soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">\r\n  <soap12:Body>\r\n    <GetBookingInfoPS xmlns="http://tempuri.org/">\r\n      <strCustomerId>${customerId}</strCustomerId>\r\n      <Username>${creds.username}</Username>\r\n      <Password>${creds.password}</Password>\r\n      <Username>${creds.username}</Username>\r\n      <Password>${creds.password}</Password>\r\n    </GetBookingInfoPS>\r\n  </soap12:Body>\r\n</soap12:Envelope>`;
     let config = {
@@ -121,7 +123,7 @@ const CheckDetails = ({ data }) => {
       <div className="body">
         <h6>Organization</h6>
         <p>Are you a member of the following Organization</p>
-        <p className="default">{data.strGroupName}</p>
+        <p className="default">{orgname.length>1?orgname:data.strGroupName}</p>
         <form>
           <label htmlFor="org_yes">
             <input
@@ -181,7 +183,7 @@ const CheckDetails = ({ data }) => {
             onClick={() => {
               const org =
                 orgMember == "Yes"
-                  ? data.strGroupName
+                  ? orgname.length>1?orgname:data.strGroupName
                   : organization != "notHere"
                   ? organization
                   : organizationManual;

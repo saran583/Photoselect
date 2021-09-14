@@ -190,7 +190,7 @@ const Selected = ({ data }) => {
                     onPClick(i);
                   }}
                 >
-                  <span>p</span>
+                  <span>P</span>
                 </div>
               )}
               <span className="add" onClick={() => setIsCarouselOpen(true)}>
