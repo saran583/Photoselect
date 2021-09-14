@@ -16,6 +16,7 @@ const Favourites = (props) => {
   const [redirect, setRedirect] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
   const [errRedirect, setErrRedirect] = useState(false);
+  const selecteddata = JSON.parse(localStorage.getItem("selectedData"));
   const settings = {
     dots: false,
     infinite: true,
@@ -25,8 +26,10 @@ const Favourites = (props) => {
   };
 
   useEffect(() => {
+    const selecteddata = JSON.parse(localStorage.getItem("selectedData"));
     const customerId = localStorage.getItem("customerId");
     const bookingPath = localStorage.getItem("bookingPath");
+    console.log("this is fav",selecteddata);
 
     const data = `<soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">\r\n  <soap12:Body>\r\n    <GetRawImagesPS xmlns="http://tempuri.org/">\r\n      <strCustomerId>${customerId}</strCustomerId>\r\n      <Username>${creds.username}</Username>\r\n      <Password>${creds.password}</Password>\r\n      <strBookingPath>${bookingPath}</strBookingPath>\r\n    </GetRawImagesPS>\r\n  </soap12:Body>\r\n</soap12:Envelope>`;
     const config = {
@@ -48,12 +51,16 @@ const Favourites = (props) => {
         parser.parseString(str, function (err, result) {
           const favourite = [];
           result.GetRawImagesPSResult.images[0].string.forEach((ele, i) => {
+            console.log("this is i",i);
+            console.log("this is ele",ele);
             if (typeof ele == "string") {
               favourite[i] = { selected: false };
               favourite[i].image = ele;
             }
           });
           result.GetRawImagesPSResult.imagesId[0].string.forEach((ele, i) => {
+            // console.log("this is ele",ele);
+            // console.log("this is i",i);
             if (typeof ele == "string") {
               favourite[i].id = ele;
             }
@@ -85,6 +92,7 @@ const Favourites = (props) => {
       <div className="body">
         <div className="images_cont">
           {favourites.map((e, i) => (
+            
             <div key={i} className="image">
               <div className="photo">
                 <img src={"data:image/jpeg;base64," + e.image} />
@@ -95,6 +103,8 @@ const Favourites = (props) => {
                 onClick={() => {
                   const fav = [...favourites];
                   fav[i].selected = !fav[i].selected;
+                  // setFavourites(fav);
+                  console.log("favourites",fav);
                   setFavourites(fav);
                   const _fav = favourites.filter((e) => e.selected);
                   if (_fav.length > 0) setIsDisabled(false);

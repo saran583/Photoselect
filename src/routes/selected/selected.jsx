@@ -38,14 +38,29 @@ const Selected = ({ data }) => {
     slidesToScroll: 1,
   };
   useEffect(() => {
-    localStorage.removeItem("selectedImages");
+    const selecteddata = JSON.parse(localStorage.getItem("selectedImages"));
+    // console.log("in selected page",selecteddata[0]);
+    // localStorage.removeItem("selectedImages");
     const data = JSON.parse(localStorage.getItem("selectedData"));
 
     console.log(data);
-    data.forEach((ele) => {
+    data.forEach((ele, index) => {
       ele.c = false;
       ele.p = false;
+      selecteddata.forEach((newone) => {
+        if(newone.id===ele.id){
+          ele.c = newone.c;
+          ele.p = newone.p;
+          if(newone.p===true || newone.c ===true){
+            setIsDisabled(false);
+          }
+        }
+      });
+      
+      
     });
+
+
     setSelectedData(data);
     axios(config)
       .then(function (response) {
@@ -94,6 +109,7 @@ const Selected = ({ data }) => {
       cid = cData.id;
       reqData = `<?xml version="1.0" encoding="utf-8"?>\r\n<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">\r\n  <soap:Body>\r\n   <AddUserSelectedImages_DPC xmlns="http://tempuri.org/">\r\n      <strFkRegisterId>${data.strPkid}</strFkRegisterId>\r\n      <strUserId>${customerId}</strUserId>\r\n      <Username>${creds.username}</Username>\r\n      <Password>${creds.password}</Password>\r\n      <listImageIds>\r\n        <string>${cid}</string>\r\n      </listImageIds>\r\n      <nNoOfImages>${imageSelectionNo}</nNoOfImages>\r\n    </AddUserSelectedImages_DPC>\r\n  </soap:Body>\r\n</soap:Envelope>`;
     }
+    console.log(selectedImages);
     localStorage.setItem("selectedImages", JSON.stringify(selectedImages));
     var config = {
       method: "post",
