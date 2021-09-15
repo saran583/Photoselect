@@ -262,7 +262,27 @@ const PersionalInfo = ({ data }) => {
     }
   };
 
-  
+  const altEmailCheck = (value) => {
+    const email = getValues("email");
+    const altEmail = getValues("alternateEmail");
+    if (email && altEmail == email) {
+      setError("alternateEmail", {
+        type: "manual",
+        message: "Email and Alternate email should not be same",
+      });
+    } else {
+      clearErrors("alternateEmail");
+      console.log("this is verify email");
+    }
+  };
+
+  const matcher = (event) => {
+    const allowedRegex = /[0-9]/g;
+    if (!event.key.match(allowedRegex)) {
+      event.preventDefault();
+    }
+  };
+
   return (
     <div className="info_container">
       {redirect && <Redirect to="/favourites" />}
@@ -288,10 +308,28 @@ const PersionalInfo = ({ data }) => {
             // return;
             console.log("Thi is email", data.email);
             console.log("Thi is verify email", data);
+            if (!data.verifyEmail) {
+              window.scrollTo(0, 300);
+              setError("verifyEmail", {
+                type: "required",
+                message: "Verify Email is required",
+              });
+              setFocus("verifyEmail");
+              return;
+            }
             if (data.email !== data.verifyEmail) {
               setshowemailerr(true);
               window.scrollTo(0, 300);
               setFocus("verifyEmail");
+              return;
+            }
+            if (data.alternateEmail == data.email) {
+              window.scrollTo(0, 300);
+              setError("alternateEmail", {
+                type: "manual",
+                message: "Alternate Email and Email should not be same",
+              });
+              setFocus("alternateEmail");
               return;
             }
             localStorage.setItem("userData", JSON.stringify(data));
@@ -393,6 +431,7 @@ const PersionalInfo = ({ data }) => {
                   type="text"
                   maxLength="10"
                   id="mobile"
+                  onKeyPress={($event) => matcher($event)}
                   {...register("mobile", {
                     required: "Phone Number is required",
                     maxLength: {
@@ -402,10 +441,10 @@ const PersionalInfo = ({ data }) => {
                     minLength: {
                       value: 10,
                       message: "Phone number must be atleast 10 digits",
-                    }, 
+                    },
                     pattern: {
                       value: /^[0-9]+$/,
-                                        
+
                       message: "Phone number should contain numbers only",
                     },
                   })}
@@ -445,13 +484,7 @@ const PersionalInfo = ({ data }) => {
                   type="text"
                   id="v_email"
                   onKeyUp={($event) => verifyEmailCheck($event.target.value)}
-                  {...register("verifyEmail", {
-                    required: "Verify Email is required",
-                    pattern: {
-                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                      message: "Not a valid email",
-                    },
-                  })}
+                  {...register("verifyEmail")}
                 />
                 {errors.verifyEmail && (
                   <span className="error">{errors.verifyEmail.message}</span>
@@ -471,6 +504,7 @@ const PersionalInfo = ({ data }) => {
                 <input
                   type="text"
                   id="a_email"
+                  onKeyUp={($event) => altEmailCheck($event.target.value)}
                   {...register("alternateEmail", {
                     // required: "Alternate Email is required",
                     pattern: {
@@ -574,6 +608,7 @@ const PersionalInfo = ({ data }) => {
                       type="text"
                       maxLength="5"
                       onChange={onHandleTelephoneChange}
+                      onKeyPress={($event) => matcher($event)}
                       style={{ width: "100px", marginLeft: "10px" }}
                       {...register("zipCode", {
                         required: "Zipcode is required",

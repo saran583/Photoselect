@@ -32,18 +32,25 @@ function App() {
       return;
     }
 
-    axios.get("https://firestore.googleapis.com/v1/projects/capestone-945f7/databases/(default)/documents/test/test").then((res)=>{
-    if(res.data.fields.test.booleanValue){
-    }
-    else {
-      setErrRedirect(true);
-      return;
-    }
-    });
+    axios
+      .get(
+        "https://firestore.googleapis.com/v1/projects/capestone-945f7/databases/(default)/documents/test/test"
+      )
+      .then((res) => {
+        if (res.data.fields.test.booleanValue) {
+        } else {
+          setErrRedirect(true);
+          return;
+        }
+      });
 
     let data = `<soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">\r\n  <soap12:Header>\r\n    <AuthHeader xmlns="http://tempuri.org/">\r\n      <LoginToken>${
       query.get("token") || token
-    }</LoginToken>\r\n      <Username>${creds.username}</Username>\r\n      <Password>${creds.password}</Password>\r\n    </AuthHeader>\r\n  </soap12:Header>\r\n  <soap12:Body>\r\n    <LoginByToken3 xmlns="http://tempuri.org/" />\r\n  </soap12:Body>\r\n</soap12:Envelope>`;
+    }</LoginToken>\r\n      <Username>${
+      creds.username
+    }</Username>\r\n      <Password>${
+      creds.password
+    }</Password>\r\n    </AuthHeader>\r\n  </soap12:Header>\r\n  <soap12:Body>\r\n    <LoginByToken3 xmlns="http://tempuri.org/" />\r\n  </soap12:Body>\r\n</soap12:Envelope>`;
     let config = {
       method: "post",
       url: creds.serviceurl,

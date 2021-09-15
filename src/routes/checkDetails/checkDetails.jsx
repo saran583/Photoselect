@@ -123,7 +123,9 @@ const CheckDetails = ({ data }) => {
       <div className="body">
         <h6>Organization</h6>
         <p>Are you a member of the following Organization</p>
-        <p className="default">{orgname.length>1?orgname:data.strGroupName}</p>
+        <p className="default">
+          {orgname && orgname.length ? orgname : data.strGroupName}
+        </p>
         <form>
           <label htmlFor="org_yes">
             <input
@@ -183,7 +185,9 @@ const CheckDetails = ({ data }) => {
             onClick={() => {
               const org =
                 orgMember == "Yes"
-                  ? orgname.length>1?orgname:data.strGroupName
+                  ? orgname.length > 1
+                    ? orgname
+                    : data.strGroupName
                   : organization != "notHere"
                   ? organization
                   : organizationManual;
